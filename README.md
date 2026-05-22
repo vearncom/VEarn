@@ -1,6 +1,7 @@
-# VEarn | Premium Financial Intelligence Academy
+# Welcome to VEarn
+## Gain Knowledge. Earn Smart.
 
-Master your financial destiny with VEarn's high-fidelity, self-contained educational ecosystem. This repository contains the unified, gorgeous dark-gold Single-Page Application designed to showcase and sell elite investment blueprints.
+Welcome to VEarn. This is a premium website where you can buy digital e-books and listen to audio courses about how to earn smart. We sell high-quality guides to help you understand the future of money, learn how to use AI tools, achieve your financial goals, and discover new ways to make money in the modern world. Download your first book today, explore our collection, and start earning smarter!
 
 ## 🌟 Key Features
 
