@@ -1,185 +1,2741 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VEarn | Hello World</title>
-    <meta name="description" content="A premium Hello World experience by VEarn.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;800&family=Outfit:wght@400;700&display=swap"
-        rel="stylesheet">
+    <title>VEarn | Gain Knowledge, Earn Smart</title>
+    <meta name="description" content="Welcome to VEarn. Master your financial destiny with premium investing e-books and high-impact audio training. Gain Knowledge, Earn Smart.">
+    
+    <!-- Embedded Premium CSS System -->
     <style>
+        /* CSS Variables & Tokens */
         :root {
-            --primary: #6366f1;
-            --secondary: #a855f7;
-            --accent: #ec4899;
-            --bg: #0f172a;
-            --text: #f8fafc;
-            --glass: rgba(255, 255, 255, 0.03);
-            --glass-border: rgba(255, 255, 255, 0.1);
+            --bg-dark: #0a0a0c;
+            --bg-deep: #050506;
+            --bg-card: #111114;
+            --text-primary: #f8fafc;
+            --text-muted: #94a3b8;
+            
+            /* Luxury Champagne Gold colors & gradients */
+            --gold-primary: #d4af37;
+            --gold-light: #f3e5ab;
+            --gold-dark: #aa7c11;
+            --gold-accent: #ffe596;
+            --gold-gradient: linear-gradient(135deg, #f5d77f 0%, #d4af37 50%, #966f00 100%);
+            --gold-text-gradient: linear-gradient(to right, #ffe596 0%, #d4af37 50%, #aa7c11 100%);
+            --gold-glow: rgba(212, 175, 55, 0.15);
+            --gold-border: rgba(212, 175, 55, 0.15);
+            
+            /* Glassmorphism */
+            --glass-bg: rgba(17, 17, 20, 0.75);
+            --glass-border: rgba(255, 255, 255, 0.05);
+            --glass-glow: 0 8px 32px 0 rgba(0, 0, 0, 0.6);
+            
+            /* Transitions */
+            --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            --transition-bounce: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
+        /* Reset and Base Styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            overflow-x: hidden;
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
             position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            background-color: var(--bg-dark);
         }
 
-        /* Animated Background Mesh */
-        .bg-gradient {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: -1;
-            background:
-                radial-gradient(circle at 20% 30%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 80% 70%, rgba(168, 85, 247, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.05) 0%, transparent 50%);
-            animation: moveGradient 20s ease infinite alternate;
+        /* Webkit scrollbars */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-deep);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #222;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--gold-dark);
         }
 
-        @keyframes moveGradient {
-            0% {
-                transform: scale(1);
-            }
-
-            100% {
-                transform: scale(1.1);
-            }
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            letter-spacing: -0.01em;
         }
 
-        /* Glassmorphism Card */
-        .card {
-            background: var(--glass);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            border-radius: 24px;
-            padding: 3rem;
-            text-align: center;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            max-width: 90%;
-            width: 450px;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            border-color: rgba(255, 255, 255, 0.2);
-        }
-
-        h1 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 4rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            background: linear-gradient(to right, #6366f1, #a855f7, #ec4899);
+        .gold-text {
+            background: var(--gold-text-gradient);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
-            letter-spacing: -0.02em;
         }
 
-        p {
+        /* Radial Orbs and Matrices */
+        .bg-glow-orbs {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: -2;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(140px);
+            opacity: 0.12;
+            mix-blend-mode: screen;
+        }
+        .orb-1 {
+            top: -20%; left: -10%;
+            width: 60vw; height: 60vw;
+            background: radial-gradient(circle, var(--gold-primary) 0%, transparent 70%);
+        }
+        .orb-2 {
+            bottom: -20%; right: -10%;
+            width: 50vw; height: 50vw;
+            background: radial-gradient(circle, #aa7c11 0%, transparent 70%);
+        }
+        .orb-3 {
+            top: 40%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40vw; height: 40vw;
+            background: radial-gradient(circle, var(--gold-light) 0%, transparent 70%);
+            opacity: 0.05;
+        }
+
+        .bg-matrix {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+            background-image: 
+                radial-gradient(rgba(212, 175, 55, 0.03) 1px, transparent 1px),
+                linear-gradient(rgba(255, 255, 255, 0.003) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.003) 1px, transparent 1px);
+            background-size: 40px 40px, 80px 80px, 80px 80px;
+            pointer-events: none;
+            opacity: 0.75;
+        }
+
+        /* Header Navigation */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            width: 100%;
+            background: rgba(10, 10, 12, 0.8);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+
+        .logo-img {
+            height: 42px;
+            width: auto;
+            filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.3));
+            transition: var(--transition-bounce);
+        }
+
+        .logo-wrapper:hover .logo-img {
+            transform: scale(1.08) rotate(3deg);
+        }
+
+        .brand-name {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: 0.05em;
+            display: flex;
+            flex-direction: column;
+            line-height: 1;
+        }
+
+        .brand-tagline {
+            font-size: 0.55rem;
+            font-weight: 500;
+            color: var(--gold-primary);
+            letter-spacing: 0.28em;
+            margin-top: 4px;
+        }
+
+        .nav-tabs {
+            display: flex;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 0.35rem;
+            border-radius: 100px;
+            border: 1px solid var(--glass-border);
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 500;
+            padding: 0.6rem 1.4rem;
+            border-radius: 100px;
+            transition: var(--transition-smooth);
+            cursor: pointer;
+            border: none;
+            background: none;
+        }
+
+        .nav-link:hover {
+            color: var(--gold-light);
+        }
+
+        .nav-link.active {
+            color: var(--bg-dark);
+            background: var(--gold-gradient);
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.25);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            padding: 0.8rem 1.8rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border-radius: 12px;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            transition: var(--transition-bounce);
+        }
+
+        .btn-gold {
+            background: var(--gold-gradient);
+            color: var(--bg-deep);
+            box-shadow: 0 4px 20px var(--gold-glow);
+        }
+
+        .btn-gold:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(212, 175, 55, 0.4);
+            filter: brightness(1.08);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--gold-primary);
+            border: 1px solid var(--gold-border);
+        }
+
+        .btn-outline:hover {
+            background: rgba(212, 175, 55, 0.05);
+            color: var(--gold-light);
+            border-color: var(--gold-primary);
+            transform: translateY(-2px);
+        }
+
+        .btn-sm {
+            padding: 0.5rem 1.2rem;
+            font-size: 0.82rem;
+            border-radius: 8px;
+        }
+
+        /* Glassmorphism panels */
+        .glass-panel {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-radius: 24px;
+            box-shadow: var(--glass-glow);
+            transition: var(--transition-smooth);
+        }
+
+        .glass-panel:hover {
+            border-color: rgba(212, 175, 55, 0.25);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), 0 0 25px rgba(212, 175, 55, 0.03);
+        }
+
+        /* Core Structure and Containers */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 2rem 5rem 2rem;
+            position: relative;
+            z-index: 1;
+            flex: 1;
+        }
+
+        /* Dynamic view switching */
+        .web-section {
+            display: none;
+            opacity: 0;
+            transform: translateY(15px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .web-section.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* HOME SPECIFIC STYLES */
+        .hero-section {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            align-items: center;
+            gap: 4rem;
+            padding: 3rem 0 5rem 0;
+        }
+
+        @media (max-width: 992px) {
+            .hero-section {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+                text-align: center;
+                padding: 1rem 0 3rem 0;
+            }
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 100px;
+            background: rgba(212, 175, 55, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            color: var(--gold-light);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title {
+            font-size: 3.8rem;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        .hero-title span {
+            display: block;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--gold-primary);
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 1.8rem;
+        }
+
+        .hero-desc {
             font-size: 1.1rem;
-            color: #94a3b8;
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+        }
+
+        @media (max-width: 992px) {
+            .hero-desc {
+                margin: 0 auto 2.5rem auto;
+            }
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 992px) {
+            .hero-ctas {
+                justify-content: center;
+            }
+        }
+
+        .hero-metrics {
+            margin-top: 3.5rem;
+            display: flex;
+            gap: 3rem;
+            border-top: 1px solid var(--glass-border);
+            padding-top: 2rem;
+        }
+
+        @media (max-width: 992px) {
+            .hero-metrics {
+                justify-content: center;
+                gap: 2rem;
+            }
+        }
+
+        .metric-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .metric-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--text-primary);
+        }
+
+        .metric-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 0.2rem;
+        }
+
+        .hero-image-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .interactive-logo-card {
+            background: radial-gradient(circle at 50% 50%, rgba(20,20,25,0.8) 0%, rgba(10,10,12,0.9) 100%);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            padding: 3rem;
+            border-radius: 40px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.8), 0 0 40px rgba(212,175,55,0.05);
+            max-width: 400px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .large-logo {
+            width: 100%;
+            max-width: 250px;
+            height: auto;
+            filter: drop-shadow(0 10px 25px rgba(212, 175, 55, 0.4));
             margin-bottom: 2rem;
+        }
+
+        /* Features Section */
+        .section-title-area {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 4rem auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
             line-height: 1.6;
         }
 
-        .btn {
-            display: inline-block;
-            padding: 0.8rem 2rem;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            color: white;
-            text-decoration: none;
+        .philosophy-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 6rem;
+        }
+
+        @media (max-width: 768px) {
+            .philosophy-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .ph-card {
+            padding: 2.5rem;
+            text-align: center;
+        }
+
+        .ph-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(212, 175, 55, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.8rem auto;
+            color: var(--gold-primary);
+            transition: var(--transition-bounce);
+        }
+
+        .ph-card:hover .ph-icon {
+            transform: scale(1.1) rotate(5deg);
+            background: var(--gold-gradient);
+            color: var(--bg-deep);
+            border-color: transparent;
+            box-shadow: 0 10px 25px rgba(212,175,55,0.3);
+        }
+
+        .ph-title {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+
+        .ph-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Dual Product Showcase */
+        .showcase-area {
+            background: radial-gradient(circle at 50% 50%, rgba(18,18,22,0.6) 0%, rgba(5,5,6,0.9) 100%);
+            border: 1px solid var(--glass-border);
+            border-radius: 36px;
+            padding: 4rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        @media (max-width: 992px) {
+            .showcase-area {
+                grid-template-columns: 1fr;
+                padding: 2rem;
+                gap: 3rem;
+            }
+        }
+
+        .product-panel {
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            gap: 1.8rem;
+            align-items: center;
+        }
+
+        @media (max-width: 580px) {
+            .product-panel {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+
+        .product-cover-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .product-img {
+            max-width: 100%;
             border-radius: 12px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.6);
+            transition: var(--transition-bounce);
+        }
+
+        .product-panel:hover .product-img {
+            transform: translateY(-8px) rotate(2deg);
+            box-shadow: 0 25px 45px rgba(212, 175, 55, 0.15);
+        }
+
+        .product-details {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .prod-badge {
+            font-size: 0.65rem;
+            text-transform: uppercase;
             font-weight: 600;
-            transition: all 0.3s ease;
-            border: none;
+            color: var(--gold-primary);
+            letter-spacing: 2px;
+        }
+
+        .prod-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .prod-desc {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .prod-price {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .prod-price span {
+            font-size: 0.9rem;
+            text-decoration: line-through;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        .prod-actions {
+            margin-top: 0.5rem;
+            display: flex;
+            gap: 0.8rem;
+        }
+
+
+        /* E-BOOK SPECIFIC STYLES */
+        .ebook-grid {
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 4rem;
+            align-items: center;
+            padding: 2rem 0;
+        }
+
+        @media (max-width: 992px) {
+            .ebook-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+                text-align: center;
+            }
+        }
+
+        .cover-showcase {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .book-container {
+            position: relative;
+            transform-style: preserve-3d;
+            transition: var(--transition-bounce);
+        }
+
+        .book-3d {
+            width: 250px;
+            height: 360px;
+            border-radius: 6px 16px 16px 6px;
+            box-shadow: -15px 20px 40px rgba(0,0,0,0.8), 0 0 30px rgba(212, 175, 55, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            object-fit: cover;
+            display: block;
+        }
+
+        .chapter-area {
+            padding: 5rem 0;
+        }
+
+        .accordion {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .accordion-item {
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: var(--transition-smooth);
+        }
+
+        .accordion-item:hover {
+            border-color: rgba(212, 175, 55, 0.25);
+        }
+
+        .accordion-header {
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             cursor: pointer;
-            box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.3);
+            font-weight: 600;
+            font-size: 1.1rem;
+            user-select: none;
         }
 
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 20px 25px -5px rgba(99, 102, 241, 0.4);
-            filter: brightness(1.1);
+        .accordion-icon {
+            font-size: 1.2rem;
+            color: var(--gold-primary);
+            transition: transform 0.3s ease;
         }
 
-        /* Subtle floating animation */
-        .float {
-            animation: floating 3s ease-in-out infinite;
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            padding: 0 1.5rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            transition: max-height 0.3s cubic-bezier(0.16, 1, 0.3, 1), padding 0.3s ease;
+        }
+
+        .accordion-item.active .accordion-content {
+            padding-bottom: 1.5rem;
+        }
+
+        .accordion-item.active .accordion-icon {
+            transform: rotate(45deg);
+        }
+
+
+        /* AUDIO SPECIFIC STYLES */
+        .audio-grid {
+            display: grid;
+            grid-template-columns: 0.95fr 1.05fr;
+            gap: 4rem;
+            align-items: center;
+            padding: 2rem 0;
+        }
+
+        @media (max-width: 992px) {
+            .audio-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+                text-align: center;
+            }
+        }
+
+        .player-container {
+            width: 100%;
+            max-width: 380px;
+            padding: 2rem;
+            margin: 0 auto;
+            border-radius: 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        .player-cover-area {
+            position: relative;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+
+        .player-cover-art {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 8px solid #141416;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.8), 0 0 20px rgba(212,175,55,0.1);
+            transition: var(--transition-smooth);
+        }
+
+        .player-cover-center {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 44px; height: 44px;
+            background: #0a0a0c;
+            border: 3px solid var(--gold-primary);
+            border-radius: 50%;
+            box-shadow: inset 0 0 8px rgba(0,0,0,0.8);
+        }
+
+        .player-cover-art.playing {
+            animation: spinVinyl 12s linear infinite;
+        }
+
+        .player-meta {
+            margin-bottom: 1.2rem;
+        }
+
+        .player-track-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 0.3rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .player-track-artist {
+            font-size: 0.78rem;
+            color: var(--gold-primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+
+        .scrubber-group {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 1.2rem;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-family: monospace;
+        }
+
+        .progress-bar-container {
+            flex: 1;
+            height: 6px;
+            background: #1e1e24;
+            border-radius: 10px;
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            width: 0%;
+            background: var(--gold-gradient);
+            border-radius: 10px;
+            transition: width 0.1s linear;
+        }
+
+        .equalizer-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            gap: 4px;
+            height: 32px;
+            margin-bottom: 1.5rem;
+        }
+
+        .eq-bar {
+            width: 4px;
+            background: var(--gold-primary);
+            border-radius: 10px;
+            height: 3px;
+            transition: height 0.15s ease;
+        }
+
+        .player-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .control-btn {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .control-btn:hover {
+            color: var(--gold-light);
+        }
+
+        .control-btn.play-pause {
+            width: 58px;
+            height: 58px;
+            background: var(--gold-gradient);
+            color: var(--bg-deep);
+            box-shadow: 0 5px 15px var(--gold-glow);
+        }
+
+        .control-btn.play-pause:hover {
+            transform: scale(1.08);
+            box-shadow: 0 8px 25px rgba(212,175,55,0.35);
+        }
+
+        .tracklist-area {
+            padding: 5rem 0;
+        }
+
+        .tracklist {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .track-item {
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition-smooth);
+        }
+
+        .track-item:hover {
+            border-color: rgba(212, 175, 55, 0.2);
+            background: rgba(255,255,255,0.01);
+        }
+
+        .track-item.demo-active {
+            border-color: var(--gold-primary);
+            background: rgba(212, 175, 55, 0.03);
+        }
+
+        .track-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .track-number {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--gold-primary);
+            width: 24px;
+        }
+
+        .track-title-info {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+
+        .track-name {
+            font-weight: 600;
+            color: white;
+            font-size: 0.95rem;
+        }
+
+        .track-desc {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        .track-actions-duration {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .track-duration {
+            font-family: monospace;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .track-play-btn {
+            background: rgba(212, 175, 55, 0.08);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            color: var(--gold-primary);
+            padding: 0.4rem 0.9rem;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-bounce);
+            border: 1px solid rgba(212,175,55,0.25);
+        }
+
+        .track-play-btn:hover {
+            background: var(--gold-gradient);
+            color: var(--bg-deep);
+            border-color: transparent;
+        }
+
+        .track-locked-badge {
+            color: var(--text-muted);
+            opacity: 0.6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        /* TESTIMONIALS & REVIEWS */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            padding: 2rem 0;
+        }
+
+        @media (max-width: 992px) {
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .test-card {
+            padding: 2rem;
+        }
+
+        .test-text {
+            font-style: italic;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .test-user {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .user-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--gold-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--bg-deep);
+            font-size: 0.9rem;
+        }
+
+        .user-info {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+
+        .user-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: white;
+        }
+
+        .user-title {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+
+        /* SECURE CHECKOUT MODAL */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background: rgba(5, 5, 6, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: var(--transition-smooth);
+            padding: 1.5rem;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-card {
+            width: 100%;
+            max-width: 680px;
+            background: #0f0f12;
+            border: 1px solid var(--glass-border);
+            border-radius: 28px;
+            box-shadow: 0 30px 70px rgba(0,0,0,0.9), 0 0 50px rgba(212, 175, 55, 0.05);
+            overflow: hidden;
+            transform: scale(0.9) translateY(20px);
+            transition: var(--transition-bounce);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modal-overlay.active .modal-card {
+            transform: scale(1) translateY(0);
+        }
+
+        .modal-header {
+            padding: 1.8rem 2.2rem;
+            border-bottom: 1px solid var(--glass-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+        }
+
+        .close-btn:hover {
+            color: var(--gold-light);
+            background: rgba(255,255,255,0.05);
+        }
+
+        .modal-body {
+            padding: 2.2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            overflow-y: auto;
+        }
+
+        @media (max-width: 620px) {
+            .modal-body {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                padding: 1.5rem;
+            }
+        }
+
+        .payment-card-visualizer {
+            background: linear-gradient(135deg, #1b1b22 0%, #0d0d10 100%);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 16px;
+            padding: 1.5rem;
+            aspect-ratio: 1.586/1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5), inset 0 0 15px rgba(212, 175, 55, 0.05);
+            margin-bottom: 1rem;
+        }
+
+        .payment-card-visualizer::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -30%;
+            width: 150%; height: 150%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .card-chip {
+            width: 38px; height: 28px;
+            background: linear-gradient(135deg, #ffd700 0%, #b8860b 100%);
+            border-radius: 6px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-chip::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: 
+                linear-gradient(90deg, transparent 45%, #222 45%, #222 55%, transparent 55%),
+                linear-gradient(transparent 45%, #222 45%, #222 55%, transparent 55%);
+            opacity: 0.3;
+        }
+
+        .card-brand {
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: var(--text-primary);
+            text-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
+        }
+
+        .card-number-display {
+            font-family: monospace;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            color: var(--gold-light);
+            text-align: center;
+            margin: 1.2rem 0;
+        }
+
+        .card-bottom {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .card-label {
+            font-size: 0.6rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .card-val {
+            font-size: 0.8rem;
+            color: var(--text-primary);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .checkout-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            text-align: left;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .input-style {
+            background: #16161a;
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
+            padding: 0.8rem 1rem;
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            transition: var(--transition-smooth);
+        }
+
+        .input-style:focus {
+            outline: none;
+            border-color: var(--gold-primary);
+            box-shadow: 0 0 10px rgba(212,175,55,0.1);
+            background: #1b1b22;
+        }
+
+        .checkout-summary {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            border-top: 1px solid var(--glass-border);
+            padding-top: 1.2rem;
+            margin-top: 0.5rem;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .summary-row.total {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            border-top: 1px dashed rgba(255,255,255,0.1);
+            padding-top: 0.6rem;
+            margin-top: 0.4rem;
+        }
+
+        .success-state {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 3rem 1.5rem;
+            width: 100%;
+            min-height: 380px;
+        }
+
+        .success-icon {
+            width: 80px; height: 80px;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.8rem;
+            box-shadow: 0 0 30px rgba(16, 185, 129, 0.4);
+            animation: scalePop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        @keyframes scalePop {
+            0% { transform: scale(0); }
+            100% { transform: scale(1); }
+        }
+
+        .success-icon svg {
+            width: 40px; height: 40px;
+            fill: none;
+            stroke: white;
+            stroke-width: 3.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-dasharray: 100;
+            stroke-dashoffset: 100;
+            animation: drawCheck 0.8s 0.3s ease-out forwards;
+        }
+
+        @keyframes drawCheck {
+            to { stroke-dashoffset: 0; }
+        }
+
+        .success-state h3 {
+            font-size: 1.6rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .success-state p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            max-width: 320px;
+            margin-bottom: 2rem;
+        }
+
+        #confetti-canvas {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            z-index: 1001;
+            pointer-events: none;
+            display: none;
+        }
+
+        /* Float Animations */
+        .float-element {
+            animation: floating 6s ease-in-out infinite;
         }
 
         @keyframes floating {
-            0% {
-                transform: translateY(0px);
-            }
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-12px) rotate(0.5deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
 
-            50% {
-                transform: translateY(-10px);
-            }
+        /* Global Footer */
+        footer {
+            background: #050506;
+            border-top: 1px solid var(--glass-border);
+            padding: 3.5rem 0;
+            margin-top: auto;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
 
-            100% {
-                transform: translateY(0px);
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1.5fr;
+            gap: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
             }
         }
 
-        /* Decorative dots */
-        .dots {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
-            background-size: 40px 40px;
-            z-index: -1;
-            opacity: 0.3;
+        .footer-col {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            text-align: left;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            text-decoration: none;
+        }
+
+        .footer-logo img {
+            height: 32px;
+        }
+
+        .footer-brand {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            letter-spacing: 0.05em;
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .footer-links button {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: var(--transition-smooth);
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+            padding: 0;
+            text-align: left;
+        }
+
+        .footer-links button:hover {
+            color: var(--gold-primary);
+            padding-left: 4px;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 0.6rem;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            background: #111;
+            border: 1px solid #222;
+            border-radius: 8px;
+            padding: 0.6rem 0.9rem;
+            color: white;
+            font-size: 0.85rem;
+        }
+
+        .newsletter-form input:focus {
+            outline: none;
+            border-color: var(--gold-primary);
+        }
+
+        .newsletter-form button {
+            padding: 0.6rem 1.2rem;
+            font-size: 0.85rem;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 2.5rem auto 0 auto;
+            padding: 1.5rem 2rem 0 2rem;
+            border-top: 1px solid rgba(255,255,255,0.03);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 580px) {
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
         }
     </style>
 </head>
-
 <body>
-    <div class="dots"></div>
-    <div class="bg-gradient"></div>
 
-    <div class="card float">
-        <h1 id="title">Hello World</h1>
-        <p>Welcome to your new premium web experience. Built with precision and a touch of magic.</p>
-        <button class="btn" onclick="alert('Welcome to VEarn!')">Get Started</button>
+    <!-- Radial Glowing Orbs -->
+    <div class="bg-glow-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
     </div>
 
+    <!-- Fine Tech Matrix Grid -->
+    <div class="bg-matrix"></div>
+
+    <!-- Shared Header Navigation -->
+    <header>
+        <div class="nav-container">
+            <a onclick="switchSection('home')" class="logo-wrapper" style="cursor: pointer;">
+                <img src="assets/images/logo.png" onerror="this.src='./logo.png'" alt="VEarn Logo" class="logo-img">
+                <div class="brand-name">
+                    VEARN
+                    <span class="brand-tagline">GAIN KNOWLEDGE • EARN SMART</span>
+                </div>
+            </a>
+            <div class="nav-tabs">
+                <button class="nav-link active" id="tab-home" onclick="switchSection('home')">Home</button>
+                <button class="nav-link" id="tab-ebook" onclick="switchSection('ebook')">E-Book</button>
+                <button class="nav-link" id="tab-audio" onclick="switchSection('audio')">Audio Courses</button>
+            </div>
+            <div class="nav-actions">
+                <button onclick="switchSection('ebook')" class="btn btn-outline btn-sm">Explore Products</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="container">
+
+        <!-- 1. HOME SECTION -->
+        <section class="web-section active" id="sec-home">
+            <!-- Hero Layout -->
+            <div class="hero-section">
+                <div class="hero-content">
+                    <div class="hero-badge">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="margin-right:4px;">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                        </svg>
+                        High-End Investment Academy
+                    </div>
+                    <h1 class="hero-title">
+                        Master Your <span class="gold-text">Financial Destiny</span>
+                    </h1>
+                    <h2 class="hero-subtitle">GAIN KNOWLEDGE. EARN SMART.</h2>
+                    <p class="hero-desc">
+                        VEarn is a world-class financial education ecosystem dedicated to empowering you with actionable wealth strategies. Through our premium E-Books and interactive Audio Masterclasses, we provide the blueprints to scale passive income, optimize assets, and achieve lifelong financial freedom.
+                    </p>
+                    <div class="hero-ctas">
+                        <button onclick="switchSection('ebook')" class="btn btn-gold">
+                            Explore E-Book
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </button>
+                        <button onclick="switchSection('audio')" class="btn btn-outline">
+                            Listen to Audio
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                                <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div class="hero-metrics">
+                        <div class="metric-item">
+                            <span class="metric-number">15K+</span>
+                            <span class="metric-label">Active Learners</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-number">4.9★</span>
+                            <span class="metric-label">Global Rating</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-number">98%</span>
+                            <span class="metric-label">Success Rate</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3D Tilting Emblem Logo Card -->
+                <div class="hero-image-wrapper">
+                    <div class="interactive-logo-card tilt-element float-element">
+                        <img src="assets/images/logo.png" onerror="this.src='./logo.png'" alt="VEarn Luxury Emblem" class="large-logo">
+                        <h3 class="gold-text" style="font-size:1.6rem; margin-bottom:0.5rem;">VEARN</h3>
+                        <p style="font-size:0.8rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:2px;">Gain Knowledge • Earn Smart</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pillars of Philosophy -->
+            <div style="padding: 5rem 0 3rem 0;">
+                <div class="section-title-area">
+                    <h2 class="section-title">The Three Pillars of <span class="gold-text">Wealth Mastery</span></h2>
+                    <p class="section-subtitle">Our curriculum is built on a robust foundation engineered to scale your wealth and secure a multi-generational financial legacy.</p>
+                </div>
+                
+                <div class="philosophy-grid">
+                    <!-- Pillar 1 -->
+                    <div class="glass-panel ph-card">
+                        <div class="ph-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="12" y1="1" x2="12" y2="23"></line>
+                                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                            </svg>
+                        </div>
+                        <h3 class="ph-title">1. Invest</h3>
+                        <p class="ph-desc">
+                            Develop critical strategic thinking for capital allocation. Learn stock market, cryptocurrency, and real estate systems designed to grow compound interest rapidly.
+                        </p>
+                    </div>
+
+                    <!-- Pillar 2 -->
+                    <div class="glass-panel ph-card">
+                        <div class="ph-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M2 20h20M5 17V8a7 7 0 0 1 14 0v9M9 17v-4M13 17v-2M17 17v-5"></path>
+                            </svg>
+                        </div>
+                        <h3 class="ph-title">2. Thrive</h3>
+                        <p class="ph-desc">
+                            Cultivate a highly optimized growth and millionaire mindset. Expand into passive income structures, digital systems, and automation that scales automatically.
+                        </p>
+                    </div>
+
+                    <!-- Pillar 3 -->
+                    <div class="glass-panel ph-card">
+                        <div class="ph-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                                <polyline points="2 17 12 22 22 17"></polyline>
+                                <polyline points="2 12 12 17 22 12"></polyline>
+                            </svg>
+                        </div>
+                        <h3 class="ph-title">3. Succeed</h3>
+                        <p class="ph-desc">
+                            Step fully into complete financial freedom and lifestyle automation. Guard your wealth using asset protection, smart trusts, and legacy estate planning.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Showcase Grid -->
+            <div style="padding: 2rem 0;">
+                <div class="section-title-area">
+                    <h2 class="section-title">Acquire Your <span class="gold-text">Mastery Resources</span></h2>
+                    <p class="section-subtitle">Choose your learning vehicle. Acquire the complete E-Book blueprint or dive into our premium studio-grade Audio course.</p>
+                </div>
+
+                <div class="showcase-area">
+                    <!-- E-Book Panel -->
+                    <div class="product-panel">
+                        <div class="product-cover-container">
+                            <img src="assets/images/ebook_cover.png" alt="VEarn E-Book Cover" class="product-img" style="border:1px solid rgba(212,175,55,0.2); width:130px; height:185px; object-fit:cover;">
+                        </div>
+                        <div class="product-details">
+                            <span class="prod-badge">DIGITAL E-BOOK</span>
+                            <h3 class="prod-title">VEarn Guide to Abundance</h3>
+                            <p class="prod-desc">
+                                The definitive handbook explaining stock matrices, multi-tiered cashflows, and modern investing tactics in simplified, powerful language.
+                            </p>
+                            <div class="prod-price">
+                                $29.99 <span>$59.99</span>
+                            </div>
+                            <div class="prod-actions">
+                                <button class="btn btn-gold btn-sm" onclick="openCheckout('VEarn E-Book Blueprint', 29.99)">Buy Now</button>
+                                <button onclick="switchSection('ebook')" class="btn btn-outline btn-sm">Learn More</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Audio Panel -->
+                    <div class="product-panel">
+                        <div class="product-cover-container">
+                            <img src="assets/images/audio_cover.png" alt="VEarn Audio Art" class="product-img" style="border:1px solid rgba(212,175,55,0.2); width:130px; height:185px; object-fit:cover;">
+                        </div>
+                        <div class="product-details">
+                            <span class="prod-badge">AUDIO MASTERCLASS</span>
+                            <h3 class="prod-title">VEarn Audio Series</h3>
+                            <p class="prod-desc">
+                                12 immersive studio modules teaching millionaire wealth mentalities, investing hacks, and cashflow creation. Listen anywhere, anytime.
+                            </p>
+                            <div class="prod-price">
+                                $39.99 <span>$79.99</span>
+                            </div>
+                            <div class="prod-actions">
+                                <button class="btn btn-gold btn-sm" onclick="openCheckout('VEarn Audio Masterclass', 39.99)">Buy Now</button>
+                                <button onclick="switchSection('audio')" class="btn btn-outline btn-sm">Preview</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- 2. E-BOOK SECTION -->
+        <section class="web-section" id="sec-ebook">
+            <div class="ebook-grid">
+                <div class="cover-showcase">
+                    <div class="book-container tilt-element float-element">
+                        <img src="assets/images/ebook_cover.png" alt="VEarn E-Book Cover" class="book-3d">
+                    </div>
+                </div>
+                
+                <div class="product-info">
+                    <span class="gold-text" style="font-size: 0.8rem; font-weight:700; letter-spacing: 2px; text-transform:uppercase;">The Ultimate Abundance Blueprint</span>
+                    <h1 style="font-size: 3rem; line-height: 1.1; margin: 0.6rem 0 1.2rem 0;">
+                        VEarn Guide to <span class="gold-text">Investing & Wealth</span>
+                    </h1>
+                    <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.7; margin-bottom: 2rem; text-align:left;">
+                        Unlock the secret mechanisms of capital deployment. This is not another generic advice book—it is an actionable, high-fidelity financial architecture designed to build automated multi-channel revenue systems and accelerate stock, asset, and digital crypto growth.
+                    </p>
+
+                    <!-- Value Proposition List -->
+                    <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-bottom: 2.2rem; text-align: left;">
+                        <div style="display:flex; gap:0.6rem; align-items:flex-start;">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold-primary)" stroke-width="3" style="flex-shrink:0; margin-top:2px;">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span style="font-size:0.9rem;">240+ pages of high-alpha tactics</span>
+                        </div>
+                        <div style="display:flex; gap:0.6rem; align-items:flex-start;">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold-primary)" stroke-width="3" style="flex-shrink:0; margin-top:2px;">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span style="font-size:0.9rem;">Step-by-step portfolio setups</span>
+                        </div>
+                        <div style="display:flex; gap:0.6rem; align-items:flex-start;">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold-primary)" stroke-width="3" style="flex-shrink:0; margin-top:2px;">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span style="font-size:0.9rem;">Passive income scaling worksheets</span>
+                        </div>
+                        <div style="display:flex; gap:0.6rem; align-items:flex-start;">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold-primary)" stroke-width="3" style="flex-shrink:0; margin-top:2px;">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span style="font-size:0.9rem;">PDF, ePub & Kindle format access</span>
+                        </div>
+                    </div>
+
+                    <div style="display:flex; align-items:center; gap:2rem; margin-bottom: 2.2rem; justify-content: flex-start;">
+                        <div class="prod-price" style="font-size: 2.2rem; font-weight:800;">
+                            $29.99 <span style="font-size:1.4rem;">$59.99</span>
+                        </div>
+                        <div style="background: rgba(212,175,55,0.08); border: 1px solid rgba(212,175,55,0.25); border-radius: 8px; padding: 0.4rem 0.8rem; font-size: 0.75rem; color: var(--gold-light); font-weight:700;">
+                            SAVE 50% TODAY
+                        </div>
+                    </div>
+
+                    <button class="btn btn-gold" onclick="openCheckout('VEarn E-Book Blueprint', 29.99)" style="padding: 1rem 2.5rem; font-size:1rem;">
+                        Buy E-Book Blueprint
+                    </button>
+                </div>
+            </div>
+
+            <!-- Accordion chapter lists -->
+            <div class="chapter-area">
+                <div class="section-title-area">
+                    <h2 class="section-title">What's Inside <span class="gold-text">The Blueprint</span></h2>
+                    <p class="section-subtitle">A comprehensive modular roadmap taking you from core asset fundamentals to advanced automated tax & estate structuring.</p>
+                </div>
+
+                <div class="accordion">
+                    <!-- Ch 1 -->
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>Module 01: The Wealth Conditioning Matrix</span>
+                            <span class="accordion-icon">+</span>
+                        </div>
+                        <div class="accordion-content">
+                            Analyze systemic financial engineering. Master the high-net-worth psychological shifts, dismantle wage-dependency conditioning, and program the mindset required to leverage compound debt and interest structures.
+                        </div>
+                    </div>
+
+                    <!-- Ch 2 -->
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>Module 02: Strategic Asset Allocation (Stocks, Real Estate, Crypto)</span>
+                            <span class="accordion-icon">+</span>
+                        </div>
+                        <div class="accordion-content">
+                            A detailed deep dive into modern portfolio theory. Learn exactly how to allocate capital between risk-managed equities, high-yield cash-producing real estate, and defensive decentralized digital crypto assets for balanced exponential growth.
+                        </div>
+                    </div>
+
+                    <!-- Ch 3 -->
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>Module 03: Designing Automated Passive Revenue Pipelines</span>
+                            <span class="accordion-icon">+</span>
+                        </div>
+                        <div class="accordion-content">
+                            Stop trading time for currency. Implement step-by-step instructions for establishing automated digital product sales engines, programmatic affiliate structures, dynamic royalty accounts, and hands-off dividend pools.
+                        </div>
+                    </div>
+
+                    <!-- Ch 4 -->
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>Module 04: The Risk Mitigation Shield & Wealth Guarding</span>
+                            <span class="accordion-icon">+</span>
+                        </div>
+                        <div class="accordion-content">
+                            Understand hedging, protective derivatives, and capital preservation options. Safeguard your hard-earned assets against sudden market corrections, economic inflation cycles, and structural tax liabilities.
+                        </div>
+                    </div>
+
+                    <!-- Ch 5 -->
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>Module 05: Multi-Generational Smart Structuring & Legacy</span>
+                            <span class="accordion-icon">+</span>
+                        </div>
+                        <div class="accordion-content">
+                            Learn how multi-millionaires secure their families. Step-by-step guides on setting up family limited partnerships, revocable trusts, holding companies, and global shell architectures to guarantee seamless wealth transfer.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- E-Book Testimonials -->
+            <div style="padding: 2rem 0 4rem 0;">
+                <div class="section-title-area">
+                    <h2 class="section-title">Endorsed by <span class="gold-text">Successful Minds</span></h2>
+                    <p class="section-subtitle">Real feedback from readers who have scaled their incomes and achieved true autonomy.</p>
+                </div>
+
+                <div class="testimonials-grid">
+                    <div class="glass-panel test-card">
+                        <p class="test-text">
+                            "The allocation models in Module 2 completely reframed how I distribute my savings. I've grown my passive index holdings by 35% in just 11 months while feeling 100% secure."
+                        </p>
+                        <div class="test-user">
+                            <div class="user-avatar">DR</div>
+                            <div class="user-info">
+                                <span class="user-name">Damith R.</span>
+                                <span class="user-title">Senior Software Architect</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-panel test-card">
+                        <p class="test-text">
+                            "VEarn E-Book was the catalyst I needed. I retired my 9-to-5 within a year of setting up the programmatic sales loops described in Module 3. Absolute golden blueprints!"
+                        </p>
+                        <div class="test-user">
+                            <div class="user-avatar">NK</div>
+                            <div class="user-info">
+                                <span class="user-name">Nilakshi K.</span>
+                                <span class="user-title">Digital Entrepreneur</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-panel test-card">
+                        <p class="test-text">
+                            "I bought this for the trust and family holding architectures in Chapter 5. Saved me thousands in consulting fees and laid out the exact blueprints to pass down wealth securely."
+                        </p>
+                        <div class="test-user">
+                            <div class="user-avatar">SA</div>
+                            <div class="user-info">
+                                <span class="user-name">Suresh A.</span>
+                                <span class="user-title">Private Equity Investor</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- 3. AUDIO SECTION -->
+        <section class="web-section" id="sec-audio">
+            <div class="audio-grid">
+                <!-- Advanced Custom Player UI -->
+                <div class="glass-panel player-container">
+                    <div class="player-cover-area">
+                        <img src="assets/images/audio_cover.png" alt="VEarn Audio Cover Art" class="player-cover-art" id="vinyl-art">
+                        <div class="player-cover-center"></div>
+                    </div>
+
+                    <div class="player-meta">
+                        <div class="player-track-title" id="player-title">Module 01: Millionaire Mindset Protocols</div>
+                        <div class="player-track-artist">VEarn Audio Series</div>
+                    </div>
+
+                    <!-- Equalizer animators -->
+                    <div class="equalizer-container" id="eq-container">
+                        <div class="eq-bar"></div><div class="eq-bar"></div>
+                        <div class="eq-bar"></div><div class="eq-bar"></div>
+                        <div class="eq-bar"></div><div class="eq-bar"></div>
+                        <div class="eq-bar"></div><div class="eq-bar"></div>
+                        <div class="eq-bar"></div><div class="eq-bar"></div>
+                        <div class="eq-bar"></div><div class="eq-bar"></div>
+                    </div>
+
+                    <!-- Scrubber Timeline slider -->
+                    <div class="scrubber-group">
+                        <span id="player-time-current">0:00</span>
+                        <div class="progress-bar-container" id="progress-container">
+                            <div class="progress-bar-fill" id="progress-bar"></div>
+                        </div>
+                        <span id="player-time-total">2:14</span>
+                    </div>
+
+                    <!-- Audio controls -->
+                    <div class="player-controls">
+                        <button class="control-btn" onclick="alert('Demo track only. Buy the complete Masterclass to unlock all tracks!')">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polygon points="19 20 9 12 19 4 19 20"></polygon>
+                                <line x1="5" y1="19" x2="5" y2="5"></line>
+                            </svg>
+                        </button>
+                        <button class="control-btn play-pause" id="play-btn">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" id="play-icon">
+                                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                            </svg>
+                        </button>
+                        <button class="control-btn" onclick="alert('Demo track only. Buy the complete Masterclass to unlock all tracks!')">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polygon points="5 4 15 12 5 20 5 4"></polygon>
+                                <line x1="19" y1="5" x2="19" y2="19"></line>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product Text Descriptions -->
+                <div class="product-info">
+                    <span class="gold-text" style="font-size: 0.8rem; font-weight:700; letter-spacing: 2px; text-transform:uppercase;">The Elite Audio Program</span>
+                    <h1 style="font-size: 3rem; line-height: 1.1; margin: 0.6rem 0 1.2rem 0;">
+                        VEarn Wealth <span class="gold-text">Audio Masterclass</span>
+                    </h1>
+                    <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.7; margin-bottom: 2rem; text-align:left;">
+                        Take your financial development with you on the go. The VEarn Audio Masterclass is a high-fidelity studio-recorded series engineered for active listening during commutes, workouts, or quiet focus periods. Absorb profound, elite strategies designed to compound your intelligence, investments, and passive cashflows.
+                    </p>
+
+                    <!-- Val list -->
+                    <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-bottom: 2.2rem; text-align: left;">
+                        <div style="display:flex; gap:0.6rem; align-items:flex-start;">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold-primary)" stroke-width="3" style="flex-shrink:0; margin-top:2px;">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span style="font-size:0.9rem;">12 high-fidelity studio modules</span>
+                        </div>
+                        <div style="display:flex; gap:0.6rem; align-items:flex-start;">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold-primary)" stroke-width="3" style="flex-shrink:0; margin-top:2px;">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span style="font-size:0.9rem;">Exclusive worksheets & audio notes</span>
+                        </div>
+                        <div style="display:flex; gap:0.6rem; align-items:flex-start;">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold-primary)" stroke-width="3" style="flex-shrink:0; margin-top:2px;">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span style="font-size:0.9rem;">Immediate download & online stream</span>
+                        </div>
+                        <div style="display:flex; gap:0.6rem; align-items:flex-start;">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold-primary)" stroke-width="3" style="flex-shrink:0; margin-top:2px;">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span style="font-size:0.9rem;">Lifetime updates & masterclass access</span>
+                        </div>
+                    </div>
+
+                    <div style="display:flex; align-items:center; gap:2rem; margin-bottom: 2.2rem; justify-content: flex-start;">
+                        <div class="prod-price" style="font-size: 2.2rem; font-weight:800;">
+                            $39.99 <span style="font-size:1.4rem;">$79.99</span>
+                        </div>
+                        <div style="background: rgba(212,175,55,0.08); border: 1px solid rgba(212,175,55,0.25); border-radius: 8px; padding: 0.4rem 0.8rem; font-size: 0.75rem; color: var(--gold-light); font-weight:700;">
+                            SAVE 50% TODAY
+                        </div>
+                    </div>
+
+                    <button class="btn btn-gold" onclick="openCheckout('VEarn Audio Masterclass', 39.99)" style="padding: 1rem 2.5rem; font-size:1rem;">
+                        Buy Audio Masterclass
+                    </button>
+                </div>
+            </div>
+
+            <!-- Playlist module tracks -->
+            <div class="tracklist-area">
+                <div class="section-title-area">
+                    <h2 class="section-title">The Masterclass <span class="gold-text">Modules</span></h2>
+                    <p class="section-subtitle">A powerful acoustic collection taking you from fundamental abundance mindsets to active portfolio hedging blueprints.</p>
+                </div>
+
+                <div class="tracklist">
+                    <!-- Track 1 (Demo Active) -->
+                    <div class="track-item demo-active" id="track-1">
+                        <div class="track-info">
+                            <span class="track-number">01</span>
+                            <div class="track-title-info">
+                                <span class="track-name">Millionaire Mindset Protocols (Introduction)</span>
+                                <span class="track-desc">Dismantling legacy employee blocks and wiring your cognitive pathways for scalable capital generation.</span>
+                            </div>
+                        </div>
+                        <div class="track-actions-duration">
+                            <span class="track-duration">2:14</span>
+                            <button class="track-play-btn" id="track-play-1">Listen Demo</button>
+                        </div>
+                    </div>
+
+                    <!-- Track 2 -->
+                    <div class="track-item">
+                        <div class="track-info">
+                            <span class="track-number">02</span>
+                            <div class="track-title-info">
+                                <span class="track-name">Module 02: Dynamic Equity & Stock Selection</span>
+                                <span class="track-desc">Understanding valuation algorithms, structural growth catalysts, and long-term asset compound equations.</span>
+                            </div>
+                        </div>
+                        <div class="track-actions-duration">
+                            <span class="track-duration">34:15</span>
+                            <span class="track-locked-badge">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                                </svg>
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Track 3 -->
+                    <div class="track-item">
+                        <div class="track-info">
+                            <span class="track-number">03</span>
+                            <div class="track-title-info">
+                                <span class="track-name">Module 03: Programmatic Digital Asset Pipelines</span>
+                                <span class="track-desc">How to deploy passive high-margin software, newsletters, and products that deliver profits 24/7/365.</span>
+                            </div>
+                        </div>
+                        <div class="track-actions-duration">
+                            <span class="track-duration">42:08</span>
+                            <span class="track-locked-badge">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                                </svg>
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Track 4 -->
+                    <div class="track-item">
+                        <div class="track-info">
+                            <span class="track-number">04</span>
+                            <div class="track-title-info">
+                                <span class="track-name">Module 04: Hedging & Economic Volatility Insulation</span>
+                                <span class="track-desc">Protecting your accumulated net worth against global currency hyper-inflations, interest hikes, and market downturns.</span>
+                            </div>
+                        </div>
+                        <div class="track-actions-duration">
+                            <span class="track-duration">28:50</span>
+                            <span class="track-locked-badge">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                                </svg>
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Track 5 -->
+                    <div class="track-item">
+                        <div class="track-info">
+                            <span class="track-number">05</span>
+                            <div class="track-title-info">
+                                <span class="track-name">Module 05: Revocable Trust & Tax Structuring</span>
+                                <span class="track-desc">Setting up bulletproof legal frameworks to defend, scale, and pass down generational wealth tax-free.</span>
+                            </div>
+                        </div>
+                        <div class="track-actions-duration">
+                            <span class="track-duration">31:12</span>
+                            <span class="track-locked-badge">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                                </svg>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Audio Testimonials -->
+            <div style="padding: 2rem 0 4rem 0;">
+                <div class="section-title-area">
+                    <h2 class="section-title">Feedback from <span class="gold-text">the Road</span></h2>
+                    <p class="section-subtitle">Real experiences from our active listening auditory program members.</p>
+                </div>
+
+                <div class="testimonials-grid">
+                    <div class="glass-panel test-card">
+                        <p class="test-text">
+                            "I listen to Modules 1 and 2 during my morning runs. The high-fidelity production is incredible and the shift in my wealth psychology has given me massive clarity."
+                        </p>
+                        <div class="test-user">
+                            <div class="user-avatar">SL</div>
+                            <div class="user-info">
+                                <span class="user-name">Sahan L.</span>
+                                <span class="user-title">Creative Director</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-panel test-card">
+                        <p class="test-text">
+                            "Module 3's cashflow outline is incredibly precise. Having it in my ears during commutes forced me to take action on setting up my digital asset system. Incredible masterclass."
+                        </p>
+                        <div class="test-user">
+                            <div class="user-avatar">PM</div>
+                            <div class="user-info">
+                                <span class="user-name">Pooja M.</span>
+                                <span class="user-title">E-commerce Consultant</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-panel test-card">
+                        <p class="test-text">
+                            "The tax defense modules in Module 5 are pure gold. Unpacking legal Revocable Trusts on-the-go simplified a highly complex topic so beautifully. Totally worth it."
+                        </p>
+                        <div class="test-user">
+                            <div class="user-avatar">HD</div>
+                            <div class="user-info">
+                                <span class="user-name">Harsha D.</span>
+                                <span class="user-title">Investment Advisor</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- SECURE CHECKOUT MODAL (SHARED) -->
+    <div class="modal-overlay" id="checkout-modal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3 class="modal-title">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold-primary)" stroke-width="2.5">
+                        <rect x="2" y="5" width="20" height="14" rx="2" ry="2"></rect>
+                        <line x1="2" y1="10" x2="22" y2="10"></line>
+                    </svg>
+                    Secure checkout
+                </h3>
+                <button class="close-btn" onclick="closeCheckout()">&times;</button>
+            </div>
+            
+            <!-- Payment Input Form -->
+            <form class="modal-body checkout-form" id="payment-form">
+                <!-- Left Column: Premium Credit Card Visualizer -->
+                <div>
+                    <div class="payment-card-visualizer">
+                        <div class="card-top">
+                            <div class="card-chip"></div>
+                            <span class="card-brand" id="visual-card-title">VEARN</span>
+                        </div>
+                        <div class="card-number-display" id="card-num-display">•••• •••• •••• ••••</div>
+                        <div class="card-bottom">
+                            <div>
+                                <span class="card-label">Card Holder</span>
+                                <div class="card-val" id="card-holder-display">CARDHOLDER NAME</div>
+                            </div>
+                            <div style="text-align: right;">
+                                <span class="card-label">Expires</span>
+                                <div class="card-val" id="card-expiry-display">MM/YY</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Summary Area -->
+                    <div class="checkout-summary">
+                        <div class="summary-row">
+                            <span>Item:</span>
+                            <span id="modal-product-name" style="color:white; font-weight:500;">VEarn Product</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Price:</span>
+                            <span id="modal-product-price">$0.00</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Security:</span>
+                            <span>Secure SSL Encrypted</span>
+                        </div>
+                        <div class="summary-row total">
+                            <span>Total Due:</span>
+                            <span class="gold-text" id="modal-total-price" style="font-weight:800;">$0.00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Card Details Inputs -->
+                <div class="checkout-form">
+                    <div class="form-group">
+                        <label for="card-email">Email Address</label>
+                        <input type="email" id="card-email" class="input-style" placeholder="email@address.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="card-name">Cardholder Name</label>
+                        <input type="text" id="card-name" class="input-style" placeholder="JOHN DOE" required autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <label for="card-number">Card Number</label>
+                        <input type="text" id="card-number" class="input-style" placeholder="4111 2222 3333 4444" required autocomplete="off">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="card-expiry">Expiry Date</label>
+                            <input type="text" id="card-expiry" class="input-style" placeholder="MM/YY" required autocomplete="off">
+                        </div>
+                        <div class="form-group">
+                            <label for="card-cvv">CVV</label>
+                            <input type="password" id="card-cvv" class="input-style" placeholder="•••" maxlength="3" required autocomplete="off">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-gold" style="width: 100%; margin-top: 1rem; padding:0.9rem;">
+                        Authorize Payment
+                    </button>
+                </div>
+            </form>
+
+            <!-- Checkout Order Success State -->
+            <div class="success-state" id="checkout-success">
+                <div class="success-icon">
+                    <svg viewBox="0 0 52 52">
+                        <polyline points="14 27 22 35 38 19"></polyline>
+                    </svg>
+                </div>
+                <h3 class="gold-text">Purchase Successful!</h3>
+                <p>Welcome to the VEarn elite tier. Your credentials, secure download link, and audio dashboard token have been sent to your email.</p>
+                <button class="btn btn-gold" onclick="closeCheckout()" style="padding: 0.7rem 2rem;">Access Now</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Active particle confetti canvas -->
+    <canvas id="confetti-canvas"></canvas>
+
+    <!-- Shared Brand Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <a onclick="switchSection('home')" class="footer-logo" style="cursor: pointer;">
+                    <img src="assets/images/logo.png" onerror="this.src='./logo.png'" alt="VEarn Footer Logo">
+                    <span class="footer-brand">VEARN</span>
+                </a>
+                <p style="line-height:1.6; font-size:0.85rem;">
+                    A premium financial intelligence institution dedicated to providing elite investment strategy training, modern capital acquisition systems, and abundance coaching.
+                </p>
+            </div>
+            
+            <div class="footer-col">
+                <h4 style="color:white; font-size:0.95rem;">Quick Navigation</h4>
+                <ul class="footer-links">
+                    <li><button onclick="switchSection('home')">Home Portal</button></li>
+                    <li><button onclick="switchSection('ebook')">E-Books</button></li>
+                    <li><button onclick="switchSection('audio')">Audio Masterclass</button></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4 style="color:white; font-size:0.95rem;">Elite Updates</h4>
+                <p style="font-size:0.8rem; line-height:1.5;">Join 15,000+ investors receiving our bi-weekly high-alpha market briefs and priority course deals.</p>
+                <div class="newsletter-form">
+                    <input type="email" placeholder="investor@email.com" aria-label="Email Input" id="newsletter-email">
+                    <button class="btn btn-gold btn-sm" onclick="subscribeNewsletter()">Join</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 VEarn Global Inc. All rights reserved. Gain Knowledge, Earn Smart.</p>
+            <p>
+                <a href="#" style="color:var(--text-muted); text-decoration:none; margin-right: 1rem;">Terms of Service</a>
+                <a href="#" style="color:var(--text-muted); text-decoration:none;">Privacy Policy</a>
+            </p>
+        </div>
+    </footer>
+
+
+    <!-- Embedded Interactive JS Engine -->
     <script>
-        // Micro-animation for mouse interaction
-        document.addEventListener('mousemove', (e) => {
-            const card = document.querySelector('.card');
-            const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
-            const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
-            card.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+        document.addEventListener('DOMContentLoaded', () => {
+            init3DTilt();
+            initPaymentForm();
         });
 
-        // Reset transform on mouse leave
-        document.addEventListener('mouseleave', () => {
-            const card = document.querySelector('.card');
-            card.style.transform = `rotateY(0deg) rotateX(0deg)`;
+        /* 1. Dynamic Section Switching (SPA Navigation) */
+        function switchSection(sectionId) {
+            // Close active player if switching sections
+            if (sectionId !== 'audio' && isPlaying) {
+                pausePlayerUI();
+            }
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // Swap Active Nav Link
+            const tabs = ['home', 'ebook', 'audio'];
+            tabs.forEach(tab => {
+                const el = document.getElementById(`tab-${tab}`);
+                if (tab === sectionId) {
+                    el.classList.add('active');
+                } else {
+                    el.classList.remove('active');
+                }
+            });
+
+            // Swap Section Display
+            tabs.forEach(tab => {
+                const el = document.getElementById(`sec-${tab}`);
+                if (tab === sectionId) {
+                    el.style.display = 'block';
+                    setTimeout(() => {
+                        el.classList.add('active');
+                    }, 50);
+                } else {
+                    el.classList.remove('active');
+                    el.style.display = 'none';
+                }
+            });
+        }
+
+        /* 2. Interactive 3D Card Cursor Tracking */
+        function init3DTilt() {
+            const tiltElements = document.querySelectorAll('.tilt-element');
+            
+            tiltElements.forEach(el => {
+                el.addEventListener('mousemove', (e) => {
+                    const rect = el.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    
+                    const maxTilt = 15; 
+                    const tiltX = ((centerY - y) / centerY) * maxTilt;
+                    const tiltY = ((x - centerX) / centerX) * maxTilt;
+                    
+                    el.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale3d(1.02, 1.02, 1.02)`;
+                });
+                
+                el.addEventListener('mouseleave', () => {
+                    el.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+                    el.style.transition = 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
+                });
+                
+                el.addEventListener('mouseenter', () => {
+                    el.style.transition = 'none';
+                });
+            });
+        }
+
+        /* 3. Secure Checkout Modal and Credit Card Synchronizer */
+        let currentProduct = { name: '', price: 0 };
+
+        function openCheckout(productName, price) {
+            currentProduct.name = productName;
+            currentProduct.price = price;
+            
+            // Set modal dynamic values
+            document.getElementById('modal-product-name').textContent = productName;
+            document.getElementById('modal-product-price').textContent = `$${price.toFixed(2)}`;
+            document.getElementById('modal-total-price').textContent = `$${price.toFixed(2)}`;
+            document.getElementById('visual-card-title').textContent = productName.substring(0, 10).toUpperCase();
+
+            // Swap checkout modal view state
+            document.querySelector('.checkout-form').style.display = 'flex';
+            document.querySelector('.success-state').style.display = 'none';
+            
+            // Clear inputs
+            const inputs = document.querySelectorAll('.input-style');
+            inputs.forEach(input => {
+                input.value = '';
+                input.style.borderColor = 'rgba(255,255,255,0.05)';
+            });
+            resetCardVisualizer();
+            
+            document.getElementById('checkout-modal').classList.add('active');
+        }
+
+        function closeCheckout() {
+            document.getElementById('checkout-modal').classList.remove('active');
+        }
+
+        function resetCardVisualizer() {
+            document.getElementById('card-num-display').textContent = '•••• •••• •••• ••••';
+            document.getElementById('card-holder-display').textContent = 'CARDHOLDER NAME';
+            document.getElementById('card-expiry-display').textContent = 'MM/YY';
+        }
+
+        function initPaymentForm() {
+            const inputNum = document.getElementById('card-number');
+            const inputName = document.getElementById('card-name');
+            const inputExpiry = document.getElementById('card-expiry');
+            const paymentForm = document.getElementById('payment-form');
+
+            // Format card number grouping
+            if (inputNum) {
+                inputNum.addEventListener('input', (e) => {
+                    let value = e.target.value.replace(/\D/g, '');
+                    if (value.length > 16) value = value.substring(0, 16);
+                    
+                    let formatted = '';
+                    for (let i = 0; i < value.length; i++) {
+                        if (i > 0 && i % 4 === 0) formatted += ' ';
+                        formatted += value[i];
+                    }
+                    e.target.value = formatted;
+                    document.getElementById('card-num-display').textContent = formatted || '•••• •••• •••• ••••';
+                });
+            }
+
+            // Sync name input
+            if (inputName) {
+                inputName.addEventListener('input', (e) => {
+                    document.getElementById('card-holder-display').textContent = e.target.value.toUpperCase() || 'CARDHOLDER NAME';
+                });
+            }
+
+            // Format expiry date
+            if (inputExpiry) {
+                inputExpiry.addEventListener('input', (e) => {
+                    let value = e.target.value.replace(/\D/g, '');
+                    if (value.length > 4) value = value.substring(0, 4);
+                    
+                    if (value.length >= 3) {
+                        e.target.value = value.substring(0, 2) + '/' + value.substring(2);
+                    } else {
+                        e.target.value = value;
+                    }
+                    document.getElementById('card-expiry-display').textContent = e.target.value || 'MM/YY';
+                });
+            }
+
+            // Handle submit security processing
+            if (paymentForm) {
+                paymentForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    
+                    const inputs = paymentForm.querySelectorAll('.input-style');
+                    let valid = true;
+                    inputs.forEach(input => {
+                        if (!input.value) {
+                            input.style.borderColor = '#ef4444';
+                            valid = false;
+                        } else {
+                            input.style.borderColor = 'rgba(255,255,255,0.05)';
+                        }
+                    });
+                    
+                    if (!valid) return;
+
+                    const submitBtn = paymentForm.querySelector('button[type="submit"]');
+                    const originalHtml = submitBtn.innerHTML;
+                    
+                    submitBtn.disabled = true;
+                    submitBtn.innerHTML = `
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="animation: spin 1s linear infinite; margin-right:6px;">
+                            <circle cx="12" cy="12" r="10" stroke-opacity="0.25"></circle>
+                            <path d="M4 12a8 8 0 0 1 8-8v8H4z"></path>
+                        </svg>
+                        Authorizing Securely...
+                    `;
+
+                    // Simple spin CSS
+                    const styleNode = document.createElement('style');
+                    styleNode.id = 'spin-style';
+                    styleNode.innerHTML = '@keyframes spin { 100% { transform: rotate(360deg); } }';
+                    document.head.appendChild(styleNode);
+
+                    setTimeout(() => {
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = originalHtml;
+                        const styleNodeEl = document.getElementById('spin-style');
+                        if (styleNodeEl) styleNodeEl.remove();
+
+                        // Swap Modal states
+                        document.querySelector('.checkout-form').style.display = 'none';
+                        document.querySelector('.success-state').style.display = 'flex';
+
+                        // Spark Confetti celebration
+                        launchConfetti();
+                    }, 2400);
+                });
+            }
+        }
+
+        /* 4. Dynamic Confetti Celebration */
+        function launchConfetti() {
+            const canvas = document.getElementById('confetti-canvas');
+            if (!canvas) return;
+
+            canvas.style.display = 'block';
+            const ctx = canvas.getContext('2d');
+            
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            window.addEventListener('resize', () => {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            });
+
+            const particles = [];
+            const colors = ['#f5d77f', '#d4af37', '#b8860b', '#ffffff', '#aa7c11'];
+
+            class Confetti {
+                constructor() {
+                    this.x = Math.random() * canvas.width;
+                    this.y = canvas.height + 20;
+                    this.size = Math.random() * 8 + 4;
+                    this.speedX = Math.random() * 6 - 3;
+                    this.speedY = Math.random() * -12 - 12;
+                    this.color = colors[Math.floor(Math.random() * colors.length)];
+                    this.rotation = Math.random() * 360;
+                    this.rotationSpeed = Math.random() * 4 - 2;
+                    this.gravity = 0.4;
+                }
+
+                update() {
+                    this.x += this.speedX;
+                    this.speedY += this.gravity;
+                    this.y += this.speedY;
+                    this.rotation += this.rotationSpeed;
+                }
+
+                draw() {
+                    ctx.save();
+                    ctx.translate(this.x, this.y);
+                    ctx.rotate((this.rotation * Math.PI) / 180);
+                    ctx.fillStyle = this.color;
+                    ctx.fillRect(-this.size / 2, -this.size / 2, this.size, this.size);
+                    ctx.restore();
+                }
+            }
+
+            for (let i = 0; i < 160; i++) {
+                setTimeout(() => {
+                    particles.push(new Confetti());
+                }, Math.random() * 400);
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                let active = false;
+                particles.forEach(p => {
+                    if (p.y < canvas.height + 50) {
+                        p.update();
+                        p.draw();
+                        active = true;
+                    }
+                });
+
+                if (active) {
+                    requestAnimationFrame(animate);
+                } else {
+                    canvas.style.display = 'none';
+                }
+            }
+            animate();
+        }
+
+        /* 5. Custom E-Book accordion script */
+        function toggleAccordion(header) {
+            const item = header.parentElement;
+            const content = item.querySelector('.accordion-content');
+            const active = item.classList.contains('active');
+            
+            document.querySelectorAll('.accordion-item').forEach(otherItem => {
+                otherItem.classList.remove('active');
+                otherItem.querySelector('.accordion-content').style.maxHeight = null;
+            });
+            
+            if (!active) {
+                item.classList.add('active');
+                content.style.maxHeight = content.scrollHeight + "px";
+            }
+        }
+
+        /* 6. Custom Audio player logic & simulated sound synth */
+        let isPlaying = false;
+        let playInterval = null;
+        let eqInterval = null;
+        let currentTime = 0;
+        const totalDuration = 134; // 2m 14s
+
+        const playBtn = document.getElementById('play-btn');
+        const playIcon = document.getElementById('play-icon');
+        const vinylArt = document.getElementById('vinyl-art');
+        const eqBars = document.querySelectorAll('.eq-bar');
+        const timeCurrent = document.getElementById('player-time-current');
+        const progressBar = document.getElementById('progress-bar');
+        const progressContainer = document.getElementById('progress-container');
+        const trackPlayBtn = document.getElementById('track-play-1');
+
+        function togglePlay() {
+            isPlaying = !isPlaying;
+            if (isPlaying) {
+                // Change Play Icon to Pause
+                playIcon.innerHTML = `
+                    <rect x="4" y="4" width="4" height="16"></rect>
+                    <rect x="14" y="4" width="4" height="16"></rect>
+                `;
+                vinylArt.classList.add('playing');
+                trackPlayBtn.textContent = "Pause Demo";
+
+                // Play custom browser tone synthesizer
+                playAmbientSynth();
+
+                // Increment seeker bar
+                playInterval = setInterval(() => {
+                    currentTime++;
+                    if (currentTime > totalDuration) {
+                        resetPlayer();
+                    } else {
+                        updateTimerUI();
+                    }
+                }, 1000);
+
+                // Pulse Equalizer graphics
+                eqInterval = setInterval(() => {
+                    eqBars.forEach(bar => {
+                        const height = Math.random() * 26 + 3;
+                        bar.style.height = `${height}px`;
+                    });
+                }, 150);
+
+            } else {
+                pausePlayerUI();
+            }
+        }
+
+        function pausePlayerUI() {
+            isPlaying = false;
+            playIcon.innerHTML = `<polygon points="5 3 19 12 5 21 5 3"></polygon>`;
+            vinylArt.classList.remove('playing');
+            trackPlayBtn.textContent = "Listen Demo";
+            clearInterval(playInterval);
+            clearInterval(eqInterval);
+            
+            eqBars.forEach(bar => {
+                bar.style.height = '3px';
+            });
+            stopAmbientSynth();
+        }
+
+        function resetPlayer() {
+            currentTime = 0;
+            pausePlayerUI();
+            updateTimerUI();
+        }
+
+        function updateTimerUI() {
+            const minutes = Math.floor(currentTime / 60);
+            const seconds = currentTime % 60;
+            timeCurrent.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+            
+            const pct = (currentTime / totalDuration) * 100;
+            progressBar.style.width = `${pct}%`;
+        }
+
+        // Seeking scrubbing logic
+        progressContainer.addEventListener('click', (e) => {
+            const rect = progressContainer.getBoundingClientRect();
+            const clickX = e.clientX - rect.left;
+            const pct = clickX / rect.width;
+            currentTime = Math.floor(pct * totalDuration);
+            updateTimerUI();
+            if (synthOsc && audioCtx) {
+                synthOsc.frequency.setValueAtTime(220 + currentTime * 2, audioCtx.currentTime);
+            }
         });
+
+        playBtn.addEventListener('click', togglePlay);
+        trackPlayBtn.addEventListener('click', togglePlay);
+
+        // Synth tones using Web Audio API
+        let audioCtx = null;
+        let synthOsc = null;
+        let synthGain = null;
+
+        function playAmbientSynth() {
+            try {
+                if (!audioCtx) {
+                    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                }
+                if (audioCtx.state === 'suspended') {
+                    audioCtx.resume();
+                }
+                
+                synthOsc = audioCtx.createOscillator();
+                synthGain = audioCtx.createGain();
+                
+                synthOsc.type = 'triangle'; 
+                synthOsc.frequency.setValueAtTime(220 + currentTime, audioCtx.currentTime); 
+                
+                synthGain.gain.setValueAtTime(0.012, audioCtx.currentTime);
+                synthGain.gain.exponentialRampToValueAtTime(0.02, audioCtx.currentTime + 1.5);
+                
+                synthOsc.connect(synthGain);
+                synthGain.connect(audioCtx.destination);
+                synthOsc.start();
+            } catch(e) {
+                console.log("Synthesizer blocked or unsupported: ", e);
+            }
+        }
+
+        function stopAmbientSynth() {
+            if (synthOsc) {
+                try {
+                    synthGain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.3);
+                    setTimeout(() => {
+                        if (synthOsc) {
+                            synthOsc.stop();
+                            synthOsc.disconnect();
+                            synthOsc = null;
+                        }
+                    }, 400);
+                } catch(e) {}
+            }
+        }
+
+        function subscribeNewsletter() {
+            const email = document.getElementById('newsletter-email').value;
+            if (email) {
+                alert('Thank you for subscribing to VEarn market briefs!');
+                document.getElementById('newsletter-email').value = '';
+            } else {
+                alert('Please enter a valid email address.');
+            }
+        }
     </script>
 </body>
-
 </html>
